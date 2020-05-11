@@ -1,12 +1,14 @@
 {
   "name": "chart-comparisons",
   "version": "0.1.0",
+  "homepage": "https://melvinodsa.github.io/chart-comparisons",
   "private": true,
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^2.2.0",
     "highcharts": "^8.1.0",
     "lodash": "^4.17.15",
     "plotly.js": "^1.54.1",
@@ -15,6 +17,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
