@@ -3,7 +3,9 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import Plotly from "plotly.js";
-import Highcharts, { charts } from "highcharts";
+import Highcharts from "highcharts";
+import chartJS from "chart.js";
+import "chartjs-plugin-annotation";
 import _ from "lodash";
 
 // import createPlotlyComponent from "react-plotly.js/factory";
@@ -120,6 +122,21 @@ const strikes = _.map(data, (item) => item.strike);
 const callColor = "#0fd190";
 const putColor = "#ff3f38";
 
+const payOffData = [
+  { strike: 9800, onTargetDate: -18000, onExpiry: -18000 },
+  { strike: 9850, onTargetDate: -15000, onExpiry: -18000 },
+  { strike: 9400, onTargetDate: 0, onExpiry: -18000 },
+  { strike: 10300, onTargetDate: 53000, onExpiry: 51000 },
+];
+
+const payOffStrikes = _.map(payOffData, (item) => item.strike);
+const payOffOnTargetDate = _.map(payOffData, (item) => item.onTargetDate);
+const payOffOnExpiry = _.map(payOffData, (item) => item.onExpiry);
+const zeroTargetValue = _.find(payOffData, (item) => item.onTargetDate === 0)
+  .strike;
+const zeroOnExpiry = _.find(payOffData, (item) => item.onTargetDate === 0)
+  .onExpiry;
+
 function createAmCharts() {
   let chart = am4core.create("amchart", am4charts.XYChart);
 
@@ -214,6 +231,7 @@ function createPlotly() {
       },
     },
     legend: { orientation: "h", x: 0.45 },
+    hovermode: "compare",
   };
 
   Plotly.newPlot("plotly", plotlyOldData, layout);
@@ -268,11 +286,70 @@ function createHighCharts() {
   });
 }
 
+function createChartJSPayoff() {
+  const ctx = document.getElementById("chartjs-payoff");
+  var randomScalingFactor = function () {
+    return (
+      Math.ceil(Math.random() * 10.0) *
+      Math.pow(10, Math.ceil(Math.random() * 5))
+    );
+  };
+
+  const config = {
+    type: "line",
+    data: {
+      labels: payOffStrikes,
+      datasets: [
+        {
+          label: "On Target Date",
+          data: payOffOnTargetDate,
+          borderColor: ["rgba(255, 99, 132, 1)"],
+          borderWidth: 1,
+          fill: false,
+        },
+        {
+          label: "On Expiry",
+          data: payOffOnExpiry,
+          borderColor: ["rgba(54, 162, 235, 1)"],
+          fill: false,
+          borderWidth: 1,
+          borderDash: [3, 7, 3],
+        },
+      ],
+    },
+    options: {
+      annotation: {
+        events: ["click"],
+        annotations: [
+          {
+            drawTime: "afterDatasetsDraw",
+            id: "hline",
+            type: "line",
+            mode: "vertical",
+            scaleID: "x-axis-0",
+            value: zeroTargetValue,
+            borderColor: "black",
+            borderWidth: 1,
+            borderDash: [3, 7, 3],
+            label: {
+              backgroundColor: "red",
+              content: "Projected Loss " + zeroOnExpiry,
+              enabled: true,
+            },
+          },
+        ],
+      },
+    },
+  };
+  return new chartJS(ctx, config);
+}
+
 class App extends Component {
   componentDidMount() {
     this.amchart = createAmCharts();
     this.plotly = createPlotly();
     this.highcharts = createHighCharts();
+    this.chartjsPayOff = createChartJSPayoff();
   }
 
   componentWillUnmount() {
@@ -287,6 +364,11 @@ class App extends Component {
         <div id="amchart"></div>
         <div id="plotly"></div>
         <div id="highcharts"></div>
+        <canvas
+          id="chartjs-payoff"
+          width={document.body.offsetWidth + ""}
+          height="400"
+        ></canvas>
       </React.Fragment>
     );
   }
