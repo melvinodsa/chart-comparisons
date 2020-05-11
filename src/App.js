@@ -8,9 +8,6 @@ import chartJS from "chart.js";
 import "chartjs-plugin-annotation";
 import _ from "lodash";
 
-// import createPlotlyComponent from "react-plotly.js/factory";
-// const Plot = createPlotlyComponent(Plotly);
-
 am4core.useTheme(am4themes_animated);
 
 const data = [
@@ -288,12 +285,6 @@ function createHighCharts() {
 
 function createChartJSPayoff() {
   const ctx = document.getElementById("chartjs-payoff");
-  var randomScalingFactor = function () {
-    return (
-      Math.ceil(Math.random() * 10.0) *
-      Math.pow(10, Math.ceil(Math.random() * 5))
-    );
-  };
 
   const config = {
     type: "line",
