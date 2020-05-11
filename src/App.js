@@ -309,6 +309,17 @@ function createChartJSPayoff() {
       ],
     },
     options: {
+      animation: {
+        duration: 2000,
+      },
+      title: {
+        display: true,
+        text: "Chart.js Payoff Diagram",
+      },
+      legend: {
+        display: false,
+        position: "top",
+      },
       annotation: {
         events: ["click"],
         annotations: [
