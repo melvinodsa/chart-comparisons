@@ -1,31 +1,31 @@
 {
   "files": {
     "main.css": "/chart-comparisons/static/css/main.4a977734.chunk.css",
-    "main.js": "/chart-comparisons/static/js/main.60ae44df.chunk.js",
-    "main.js.map": "/chart-comparisons/static/js/main.60ae44df.chunk.js.map",
-    "runtime-main.js": "/chart-comparisons/static/js/runtime-main.abed7384.js",
-    "runtime-main.js.map": "/chart-comparisons/static/js/runtime-main.abed7384.js.map",
-    "xlsx.js": "/chart-comparisons/static/js/xlsx.b9c56353.chunk.js",
-    "xlsx.js.map": "/chart-comparisons/static/js/xlsx.b9c56353.chunk.js.map",
-    "static/js/3.bd64b015.chunk.js": "/chart-comparisons/static/js/3.bd64b015.chunk.js",
-    "static/js/3.bd64b015.chunk.js.map": "/chart-comparisons/static/js/3.bd64b015.chunk.js.map",
-    "static/js/4.2ce28398.chunk.js": "/chart-comparisons/static/js/4.2ce28398.chunk.js",
-    "static/js/4.2ce28398.chunk.js.map": "/chart-comparisons/static/js/4.2ce28398.chunk.js.map",
-    "static/js/5.8f795576.chunk.js": "/chart-comparisons/static/js/5.8f795576.chunk.js",
-    "static/js/5.8f795576.chunk.js.map": "/chart-comparisons/static/js/5.8f795576.chunk.js.map",
-    "static/js/6.c17a5e50.chunk.js": "/chart-comparisons/static/js/6.c17a5e50.chunk.js",
-    "static/js/6.c17a5e50.chunk.js.map": "/chart-comparisons/static/js/6.c17a5e50.chunk.js.map",
+    "main.js": "/chart-comparisons/static/js/main.ac45a585.chunk.js",
+    "main.js.map": "/chart-comparisons/static/js/main.ac45a585.chunk.js.map",
+    "runtime-main.js": "/chart-comparisons/static/js/runtime-main.68018b6f.js",
+    "runtime-main.js.map": "/chart-comparisons/static/js/runtime-main.68018b6f.js.map",
+    "xlsx.js": "/chart-comparisons/static/js/xlsx.516264de.chunk.js",
+    "xlsx.js.map": "/chart-comparisons/static/js/xlsx.516264de.chunk.js.map",
+    "static/js/3.858de2f7.chunk.js": "/chart-comparisons/static/js/3.858de2f7.chunk.js",
+    "static/js/3.858de2f7.chunk.js.map": "/chart-comparisons/static/js/3.858de2f7.chunk.js.map",
+    "static/js/4.12f67ebc.chunk.js": "/chart-comparisons/static/js/4.12f67ebc.chunk.js",
+    "static/js/4.12f67ebc.chunk.js.map": "/chart-comparisons/static/js/4.12f67ebc.chunk.js.map",
+    "static/js/5.a3ea252c.chunk.js": "/chart-comparisons/static/js/5.a3ea252c.chunk.js",
+    "static/js/5.a3ea252c.chunk.js.map": "/chart-comparisons/static/js/5.a3ea252c.chunk.js.map",
+    "static/js/6.5b658481.chunk.js": "/chart-comparisons/static/js/6.5b658481.chunk.js",
+    "static/js/6.5b658481.chunk.js.map": "/chart-comparisons/static/js/6.5b658481.chunk.js.map",
     "index.html": "/chart-comparisons/index.html",
-    "precache-manifest.04300d545d185dad68a6da45ae6f7491.js": "/chart-comparisons/precache-manifest.04300d545d185dad68a6da45ae6f7491.js",
+    "precache-manifest.64a0c13c085d1e9bf8741827db8f05f5.js": "/chart-comparisons/precache-manifest.64a0c13c085d1e9bf8741827db8f05f5.js",
     "service-worker.js": "/chart-comparisons/service-worker.js",
     "static/css/main.4a977734.chunk.css.map": "/chart-comparisons/static/css/main.4a977734.chunk.css.map",
-    "static/js/3.bd64b015.chunk.js.LICENSE.txt": "/chart-comparisons/static/js/3.bd64b015.chunk.js.LICENSE.txt",
-    "static/js/5.8f795576.chunk.js.LICENSE.txt": "/chart-comparisons/static/js/5.8f795576.chunk.js.LICENSE.txt"
+    "static/js/3.858de2f7.chunk.js.LICENSE.txt": "/chart-comparisons/static/js/3.858de2f7.chunk.js.LICENSE.txt",
+    "static/js/5.a3ea252c.chunk.js.LICENSE.txt": "/chart-comparisons/static/js/5.a3ea252c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.abed7384.js",
-    "static/js/3.bd64b015.chunk.js",
+    "static/js/runtime-main.68018b6f.js",
+    "static/js/3.858de2f7.chunk.js",
     "static/css/main.4a977734.chunk.css",
-    "static/js/main.60ae44df.chunk.js"
+    "static/js/main.ac45a585.chunk.js"
   ]
 }
