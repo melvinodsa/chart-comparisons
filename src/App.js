@@ -3,12 +3,14 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import Plotly from "plotly.js";
-import Highcharts from "highcharts";
+import * as Highcharts from "highcharts";
+import * as annot from "highcharts/modules/annotations";
 import chartJS from "chart.js";
 import "chartjs-plugin-annotation";
 import _ from "lodash";
 
 am4core.useTheme(am4themes_animated);
+annot(Highcharts);
 
 const data = [
   {
@@ -133,6 +135,7 @@ const zeroTargetValue = _.find(payOffData, (item) => item.onTargetDate === 0)
   .strike;
 const zeroOnExpiry = _.find(payOffData, (item) => item.onTargetDate === 0)
   .onExpiry;
+const payOffMaxY = _.max([_.max(payOffOnExpiry), _.max(payOffOnTargetDate)]);
 
 function createAmCharts() {
   let chart = am4core.create("amchart", am4charts.XYChart);
@@ -345,6 +348,76 @@ function createChartJSPayoff() {
   };
   return new chartJS(ctx, config);
 }
+console.log(zeroOnExpiry, payOffMaxY);
+
+function createHighChartsPayoff() {
+  Highcharts.chart("highcharts-payoff", {
+    title: {
+      text: "High Charts Payoff",
+    },
+    xAxis: {
+      categories: payOffStrikes,
+      crosshair: true,
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0,
+      },
+    },
+    annotations: [
+      {
+        shapes: [
+          {
+            dashStyle: "DashDot",
+            type: "path",
+            fill: "none",
+            stroke: "red",
+            strokeWidth: 3,
+            points: [
+              {
+                xAxis: 0,
+                yAxis: 0,
+                x: 9400,
+                y: payOffMaxY,
+              },
+              {
+                xAxis: 0,
+                yAxis: 0,
+                x: 9400,
+                y: zeroOnExpiry,
+              },
+            ],
+            // text: "Projected Loss " + zeroOnExpiry,
+          },
+        ],
+        labels: [
+          {
+            point: {
+              xAxis: 0,
+              yAxis: 0,
+              x: 9400,
+              y: zeroOnExpiry,
+            },
+          },
+        ],
+      },
+    ],
+    series: [
+      {
+        name: "On Target Date",
+        data: payOffOnTargetDate,
+        color: "rgba(255, 99, 132, 1)",
+      },
+      {
+        name: "On Expiry",
+        data: payOffOnExpiry,
+        color: "rgba(54, 162, 235, 1)",
+        dashStyle: "DashDot",
+      },
+    ],
+  });
+}
 
 class App extends Component {
   componentDidMount() {
@@ -352,6 +425,7 @@ class App extends Component {
     this.plotly = createPlotly();
     this.highcharts = createHighCharts();
     this.chartjsPayOff = createChartJSPayoff();
+    this.highchartsPayOff = createHighChartsPayoff();
   }
 
   componentWillUnmount() {
@@ -371,6 +445,7 @@ class App extends Component {
           width={document.body.offsetWidth + ""}
           height="400"
         ></canvas>
+        <div id="highcharts-payoff"></div>
       </React.Fragment>
     );
   }
